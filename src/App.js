@@ -39,7 +39,7 @@ function App() {
             <p className='temp'>Temperatura: {degrees ? (weather.main?.temp-273.15).toFixed(2): weather.main?.temp} {symbol_temp} </p> 
             </div>
             <div className='data'>
-            <p>Presión: {(weather.main?.pressure*0.000987).toFixed(2)} atm</p>
+            <p>Presión: {(weather.main?.pressure*0.0009870).toFixed(2)} atm</p>
             <p>Velocidad del Viento: {weather.wind?.speed} m/s</p>
             <p>Humedad: {weather.main?.humidity} %</p>
             </div> 
