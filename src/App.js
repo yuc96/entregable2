@@ -34,7 +34,7 @@ function App() {
           <h1>Aplicación del Clima</h1>
           <h2>Ciudad {weather.name}, {weather.sys?.country}</h2>
           <div className='img_data'>
-            <div>
+            <div className='tempimg'>
             <img src={`http://openweathermap.org/img/wn/${weather.weather?.[0].icon}@2x.png`} alt='img_weather'/>
             <p className='temp'>Temperatura: {degrees ? (weather.main?.temp-273.15).toFixed(2): weather.main?.temp} {symbol_temp} </p> 
             </div>
