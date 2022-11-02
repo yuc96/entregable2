@@ -10,7 +10,7 @@ function App() {
   
   const change_degrees=()=>{
           setDesgrees(!degrees) ;
-          degrees ? setsymbol_temp("K"):setsymbol_temp("ºC");
+          degrees ? setsymbol_temp("ºF"):setsymbol_temp("ºC");
           console.log(degrees);
   }
 
@@ -21,7 +21,7 @@ function App() {
       axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=e3b59e91772a2b77c08ea9f159c89b93`)
        .then(res=>setWeather(res.data));
        setDesgrees(weather.main?.temp);
-       degrees ? setsymbol_temp("K"):setsymbol_temp("ºC");
+       degrees ? setsymbol_temp("ºF"):setsymbol_temp("ºC");
     }
     navigator.geolocation.getCurrentPosition(succes); 
    
@@ -36,7 +36,7 @@ function App() {
           <div className='img_data'>
             <div className='tempimg'>
             <img src={`http://openweathermap.org/img/wn/${weather.weather?.[0].icon}@2x.png`} alt='img_weather'/>
-            <p className='temp'>Temperatura: {degrees ? (weather.main?.temp-273.15).toFixed(2): weather.main?.temp} {symbol_temp} </p> 
+            <p className='temp'>Temperatura: {degrees ? (weather.main?.temp-273.15).toFixed(2): ((weather.main?.temp- 273.15)*1.8+32).toFixed(2)} {symbol_temp} </p> 
             </div>
             <div className='data'>
             <p>Presión: {(weather.main?.pressure*0.0009870).toFixed(2)} atm</p>
@@ -44,7 +44,7 @@ function App() {
             <p>Humedad: {weather.main?.humidity} %</p>
             </div> 
           </div>
-          <button onClick={change_degrees}>Grados ºC/K</button>
+          <button onClick={change_degrees}>Grados ºC/ºF</button>
        </div> 
        <></>
       </header>
